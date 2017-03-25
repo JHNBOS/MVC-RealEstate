@@ -38,5 +38,13 @@ namespace RealEstateMVC
         [Required]
         [StringLength(210)]
         public string image { get; set; }
+
+        [Required]
+        [StringLength(120)]
+        public string address { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string postal { get; set; }
     }
 }

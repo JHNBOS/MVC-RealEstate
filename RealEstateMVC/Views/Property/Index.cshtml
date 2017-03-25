@@ -5,72 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Available Houses</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-                      <table class="table">
-                          <tr>
-                              <th>
-                                  @Html.DisplayName("Image")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("Price")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("Type")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("City")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("Country")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("Built Year")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("# of Rooms")
-                              </th>
-                              <th>
-                                  @Html.DisplayName("Area Size")
-                              </th>
-                              <th></th>
-                          </tr>
+<table class="table" id="tblHouses">
+    @foreach (var item in @ViewBag.Properties) {
+    <tr>
+        <td>
+            <img src=@Url.Content(String.Format("~/Image/{0}", item.image)) width="250" height="250" />
+        </td>
+        <td>
+            @Html.Raw(item.address)
+        </td>
+        <td>
+            @Html.Raw(item.postal + " " + item.city) 
+        </td>
+        <td>
+           <b>@Html.Raw(String.Format("{0:C2}", item.price))</b>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.property_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.property_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.property_id })
+        </td>
+    </tr>
+    }
 
-                          @foreach (var item in @ViewBag.Properties) {
-                          <tr>
-                              <td>
-                                  <img src=@Url.Content(String.Format("~/Image/{0}", item.image)) width="250" height="250" />
-                              </td>
-                              <td>
-                                  @Html.Raw(item.price)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.type)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.city)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.country)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.built_year)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.number_of_rooms)
-                              </td>
-                              <td>
-                                  @Html.Raw(item.area_size)
-                              </td>
-                              <td>
-                                  @Html.ActionLink("Edit", "Edit", new { id=item.property_id }) |
-                                  @Html.ActionLink("Details", "Details", new { id=item.property_id }) |
-                                  @Html.ActionLink("Delete", "Delete", new { id=item.property_id })
-                              </td>
-                          </tr>
-                          }
-
-                      </table>
+</table>

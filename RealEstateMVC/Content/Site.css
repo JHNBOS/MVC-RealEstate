@@ -64,3 +64,22 @@ input[type="radio"] {
     width: 420px !important;
     max-width: none;
 }
+
+/* Houses table*/
+#tblHouses{
+    width: auto;
+    font-size: 13px;
+    border: none;
+}
+
+#tblHouses td:first-child{
+  padding: 20px 40px;
+  border: none;
+  display: block;
+}
+
+#tblHouses tr, td{
+  padding: 20px 40px;
+  border: none;
+  display: block;
+}

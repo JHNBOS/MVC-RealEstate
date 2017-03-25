@@ -47,7 +47,7 @@ namespace RealEstateMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image")] properties properties)
+        public ActionResult Create([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal")] properties properties)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace RealEstateMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image")] properties properties)
+        public ActionResult Edit([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal")] properties properties)
         {
             if (ModelState.IsValid)
             {
