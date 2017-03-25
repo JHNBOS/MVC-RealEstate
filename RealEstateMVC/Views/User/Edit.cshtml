@@ -1,0 +1,174 @@
+﻿@model RealEstateMVC.users
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cu = Session["User"] as users;
+}
+
+<h2>Manage Account</h2>
+
+<br />
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.HiddenFor(model => model.user_id)
+<form class="form-horizontal">
+    <fieldset>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <!--BEGIN OF FIRST COLUMN-->
+                    <!--FIRST NAME-->
+                    <div class="form-group">
+                        <label class="control-label">First Name</label>
+                        <div>
+                            @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--LAST NAME-->
+                    <div class="form-group">
+                        <label class="control-label">Last Name</label>
+                        <div>
+                            @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--Date of Birth-->
+                    <div class="form-group">
+                        <label class="control-label">Birth Date</label>
+                        <div>
+                            @Html.EditorFor(model => model.birth_date, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.birth_date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--Gender-->
+                    <div class="form-group">
+                        <label class="control-label">Gender</label>
+                        <div>
+                            @Html.RadioButtonFor(model => model.gender,"Male")Male
+                            <br />
+                            @Html.RadioButtonFor(model => model.gender,"Female")Female
+                            @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--Phone-->
+                    <div class="form-group">
+                        <label class="control-label">Phone</label>
+                        <div>
+                            @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!--END OF FIRST COLUMN-->
+                </div>
+                <div class="col-sm-5">
+                    <!--BEGIN OF FIRST COLUMN-->
+                    <!--CITY-->
+                    <div class="form-group">
+                        <label class="control-label">City</label>
+                        <div>
+                            @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--COUNTRY-->
+                    <div class="form-group">
+                        <label class="control-label">Country</label>
+                        <div>
+                            @Html.EditorFor(model => model.country, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--EMAIL-->
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <div>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--PASSWORD-->
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <div>
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--TYPE OF ACCOUNT-->
+                    <div class="form-group">
+                        <label class="control-label">Type of User</label>
+                        <div>
+                            @Html.RadioButtonFor(model => model.type,"Buyer")Buyer
+                            <br />
+                            @Html.RadioButtonFor(model => model.type,"Seller")Seller
+                            @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!--END OF FIRST COLUMN-->
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5">
+                    <!--SUBMIT BUTTON-->
+                    <div class="form-group">
+                        <div>
+                            <input id="btnEdit" type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+
+
+    </fieldset>
+</form>
+        }
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

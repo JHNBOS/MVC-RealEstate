@@ -1,0 +1,72 @@
+﻿@model RealEstateMVC.users
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <h2>Login</h2>
+        </div>
+        <div class="col-sm-5"></div>
+        <div class="col-sm-5"></div>
+    </div>
+
+
+<br />
+
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<form class="form-horizontal">
+    <fieldset>
+
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <!--BEGIN OF FIRST COLUMN-->
+                    <!--EMAIL-->
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <div>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control",  @id = "inputEmail" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <!--PASSWORD-->
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <div>
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control",  @id = "inputPassword" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" id="btnLogin" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-3"></div>
+
+            </div>
+    </fieldset>
+</form>
+}
+
+</div>
