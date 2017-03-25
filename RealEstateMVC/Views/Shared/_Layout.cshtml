@@ -6,6 +6,10 @@
     <title>@ViewBag.Title - Houses 'n More</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @{
+    var cu = Session["User"] as users;
+    }
+
 
 </head>
 <body>
@@ -21,11 +25,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewBag.Current == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="@(ViewBag.Current == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>                    
+                    @if (cu != null)
+                    {
+                        <li class="@(ViewBag.Current == "Houses" ? "active" : "" )">@Html.ActionLink("Houses", "Index", "Property")</li>
+                    }
+                    
                     <li class="@(ViewBag.Current == "About" ? "active" : "")">@Html.ActionLink("About", "About", "Home")</li>
                     <li class="@(ViewBag.Current == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial", null)
             </div>
         </div>
     </div>
