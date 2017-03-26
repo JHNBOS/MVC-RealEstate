@@ -1,8 +1,9 @@
 ﻿@model RealEstateMVC.properties
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Houses";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var cu = @ViewBag.CurrentUser;
 }
 
 <h2>Available Houses</h2>
@@ -10,27 +11,88 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<br />
+
 <table class="table" id="tblHouses">
-    @foreach (var item in @ViewBag.Properties) {
+    @for(var i = 0; i < @ViewBag.Properties.Count-1; i++) {
+    
+    <!--Image-->
     <tr>
-        <td>
-            <img src=@Url.Content(String.Format("~/Image/{0}", item.image)) width="250" height="250" />
+        <td id="imageFirst">
+            <a href="@Url.Action("Details", new { id=@ViewBag.Properties[i].property_id })">
+                <img src=@Url.Content(String.Format("~/Image/{0}", @ViewBag.Properties[i].image)) width="310" height="225" style="border-radius:2px;" />
+            </a>
         </td>
-        <td>
-            @Html.Raw(item.address)
-        </td>
-        <td>
-            @Html.Raw(item.postal + " " + item.city) 
-        </td>
-        <td>
-           <b>@Html.Raw(String.Format("{0:C2}", item.price))</b>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.property_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.property_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.property_id })
+        <td id="imageSecond">
+            <a href="@Url.Action("Details", new { id=@ViewBag.Properties[i+1].property_id })">
+                <img src=@Url.Content(String.Format("~/Image/{0}", @ViewBag.Properties[i+1].image)) width="310" height="225" style="border-radius:2px;" />
+            </a>        
         </td>
     </tr>
+
+    <!--Address-->
+    <tr>
+        <td id="addressFirst">
+            <p class="text-primary">
+                <b>
+                    @Html.Raw(@ViewBag.Properties[i].address)
+                </b>
+            </p>
+        </td>
+        <td id="addressSecond">
+            <p class="text-primary">
+                <b>
+                    @Html.Raw(@ViewBag.Properties[i+1].address)
+                </b>
+            </p>
+        </td>
+    </tr>
+
+    <!--Postal + City-->
+    <tr>
+        <td id="postalFirst">
+            @Html.Raw(@ViewBag.Properties[i].postal + " " + @ViewBag.Properties[i].city)
+        </td>
+        <td id="postalSecond">
+            @Html.Raw(@ViewBag.Properties[i+1].postal + " " + @ViewBag.Properties[i+1].city)
+        </td>
+    </tr>
+
+    <!--Price-->
+    <tr>
+        <td id="priceFirst">
+            <b>
+                @Html.Raw(String.Format("{0:C2}", @ViewBag.Properties[i].price))
+            </b>
+        </td>
+        <td id="priceSecond">
+            <b>
+                @Html.Raw(String.Format("{0:C2}", @ViewBag.Properties[i+1].price))
+            </b>
+        </td>
+    </tr>
+
+    <!--Actions-->
+    <tr>
+
+        @if (cu != null && cu.type == "Seller" && @ViewBag.Properties[i].owned_by == cu.email){
+        <td id="actionFirst">
+            @Html.ActionLink("Edit", "Edit", new { id=@ViewBag.Properties[i].property_id }) |
+            @Html.ActionLink("Details", "Details", new { id=@ViewBag.Properties[i].property_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=@ViewBag.Properties[i].property_id })
+        </td>
+        }
+
+        @if(cu != null && cu.type == "Seller" && @ViewBag.Properties[i+1].owned_by == cu.email){
+        <td id="actionSecond">
+            @Html.ActionLink("Edit", "Edit", new { id=@ViewBag.Properties[i+1].property_id }) |
+            @Html.ActionLink("Details", "Details", new { id=@ViewBag.Properties[i+1].property_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=@ViewBag.Properties[i+1].property_id })
+        </td>
+        }
+    </tr>
+
     }
 
 </table>

@@ -8,27 +8,40 @@
 <h2>Details</h2>
 
 <div>
-    <h4>properties</h4>
+    <h4></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.type)
+            @Html.Raw("")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.type)
+            <img src=@Url.Content(String.Format("~/Image/{0}", @Model.image)) width="310" height="225" style="border-radius:2px;" />
+        </dd>
+
+        <br />
+        <br />
+
+        <dt>
+            @Html.Raw("Address")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.city)
+            @Html.Raw("")
         </dt>
 
         <dd>
+            @Html.DisplayFor(model => model.postal)
+            @Html.Raw(" ")
             @Html.DisplayFor(model => model.city)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.country)
+            @Html.Raw("Country")
         </dt>
 
         <dd>
@@ -36,7 +49,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.built_year)
+            @Html.Raw("Price")
+        </dt>
+
+        <dd>
+            @Html.Raw(String.Format("{0:C2}", @Model.price))
+        </dd>
+
+        <dt>
+            @Html.Raw("Built Year")
         </dt>
 
         <dd>
@@ -44,7 +65,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.number_of_rooms)
+            @Html.Raw("# Rooms")
         </dt>
 
         <dd>
@@ -52,29 +73,12 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.area_size)
+            @Html.Raw("Area Size")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.area_size)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
-
     </dl>
 </div>
 <p>

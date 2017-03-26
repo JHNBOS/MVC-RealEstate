@@ -55,6 +55,10 @@ namespace RealEstateMVC
                 .Property(e => e.postal)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<properties>()
+                .Property(e => e.owned_by)
+                .IsUnicode(false);
+
             modelBuilder.Entity<rooms>()
                 .Property(e => e.property_id)
                 .IsFixedLength();

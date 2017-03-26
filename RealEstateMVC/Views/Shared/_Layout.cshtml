@@ -34,7 +34,7 @@
                     <li class="@(ViewBag.Current == "About" ? "active" : "")">@Html.ActionLink("About", "About", "Home")</li>
                     <li class="@(ViewBag.Current == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial", null)
+                @Html.Partial("_LoginPartial", new users())
             </div>
         </div>
     </div>

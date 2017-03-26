@@ -6,7 +6,7 @@ namespace RealEstateMVC
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class users
+    public class users
     {
         [Key]
         public int user_id { get; set; }

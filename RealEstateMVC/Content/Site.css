@@ -68,18 +68,55 @@ input[type="radio"] {
 /* Houses table*/
 #tblHouses{
     width: auto;
-    font-size: 13px;
+    font-size: 15px;
     border: none;
+    margin-left: 80px;
 }
 
 #tblHouses td:first-child{
-  padding: 20px 40px;
   border: none;
-  display: block;
+  padding: 0 0 8px 0;
 }
 
-#tblHouses tr, td{
-  padding: 20px 40px;
+#tblHouses tr{
   border: none;
+  border-collapse: collapse;
   display: block;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+#tblHouses td:first-child{
+  border-collapse: collapse;
+  border: none;
+  display: inline-block;
+  padding: 0 0 2px 0;
+  margin: 0 0 0 0;
+  width: 310px;
+}
+
+#tblHouses #imageSecond{
+  border-collapse: collapse;
+  border: none;
+  display: inline-block;
+  padding: 0 0 2px 0;
+  margin: 0 0 0 300px;
+}
+
+#tblHouses #actionFirst{
+  border-collapse: collapse;
+  border: none;
+  display: inline-block;
+  padding: 0 0 2px 0;
+  margin: 0 0 0 0;
+  width: 310px;
+}
+
+#tblHouses td:last-child{
+  border-collapse: collapse;
+  border: none;
+  display: inline-block;
+  padding: 0 0 2px 0;
+  margin: 0 0 0 300px;
+  width: 310px;
 }

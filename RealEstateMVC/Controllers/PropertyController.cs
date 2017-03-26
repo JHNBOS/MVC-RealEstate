@@ -18,6 +18,7 @@ namespace RealEstateMVC.Controllers
         public ActionResult Index()
         {
             ViewBag.Properties = db.properties.ToList();
+            ViewBag.CurrentUser = (users)Session["User"];
             return View();
         }
 
@@ -28,12 +29,12 @@ namespace RealEstateMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            properties properties = db.properties.Find(id);
-            if (properties == null)
+            properties property = db.properties.Find(id);
+            if (property == null)
             {
                 return HttpNotFound();
             }
-            return View(properties);
+            return View(property);
         }
 
         // GET: Property/Create
@@ -47,7 +48,7 @@ namespace RealEstateMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal")] properties properties)
+        public ActionResult Create([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal, owned_by")] properties properties)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +80,7 @@ namespace RealEstateMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal")] properties properties)
+        public ActionResult Edit([Bind(Include = "property_id,type,city,country,built_year,number_of_rooms,area_size,price,image, address, postal, owned_by")] properties properties)
         {
             if (ModelState.IsValid)
             {

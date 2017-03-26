@@ -6,7 +6,7 @@ namespace RealEstateMVC
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class properties
+    public class properties
     {
         [Key]
         public int property_id { get; set; }
@@ -46,5 +46,9 @@ namespace RealEstateMVC
         [Required]
         [StringLength(50)]
         public string postal { get; set; }
+
+        [Required]
+        [StringLength(70)]
+        public string owned_by { get; set; }
     }
 }
