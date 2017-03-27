@@ -157,10 +157,6 @@ namespace RealEstateMVC.Controllers
 
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
-            else
-            {
-                ModelState.AddModelError("", "Email and/or password is invalid!");
-            }
 
             return View(User);
         }

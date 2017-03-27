@@ -67,56 +67,39 @@ input[type="radio"] {
 
 /* Houses table*/
 #tblHouses{
-    width: auto;
+    width: 100%;
     font-size: 15px;
     border: none;
-    margin-left: 80px;
+    margin-left: 0px;
+    table-layout: auto;
 }
 
-#tblHouses td:first-child{
-  border: none;
-  padding: 0 0 8px 0;
+#tblHouses td{
+    border: none;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    border-collapse: collapse;
+    clear: both;
+    width: 33.33%;
+    height: 350px;
+}
+
+#tblHouses tr:first-child{
+    border-collapse: collapse;
+    border-top: 0px solid black;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    display: block;
+    clear: both;
+    display: flex;
 }
 
 #tblHouses tr{
-  border: none;
-  border-collapse: collapse;
-  display: block;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-}
-
-#tblHouses td:first-child{
-  border-collapse: collapse;
-  border: none;
-  display: inline-block;
-  padding: 0 0 2px 0;
-  margin: 0 0 0 0;
-  width: 310px;
-}
-
-#tblHouses #imageSecond{
-  border-collapse: collapse;
-  border: none;
-  display: inline-block;
-  padding: 0 0 2px 0;
-  margin: 0 0 0 300px;
-}
-
-#tblHouses #actionFirst{
-  border-collapse: collapse;
-  border: none;
-  display: inline-block;
-  padding: 0 0 2px 0;
-  margin: 0 0 0 0;
-  width: 310px;
-}
-
-#tblHouses td:last-child{
-  border-collapse: collapse;
-  border: none;
-  display: inline-block;
-  padding: 0 0 2px 0;
-  margin: 0 0 0 300px;
-  width: 310px;
+    border-collapse: collapse;
+    border-top: 1px solid #d5d5d5;
+    padding: 30px 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+    display: block;
+    clear: both;
+    display: flex;
 }

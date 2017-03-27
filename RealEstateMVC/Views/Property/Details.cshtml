@@ -65,7 +65,7 @@
         </dd>
 
         <dt>
-            @Html.Raw("# Rooms")
+            @Html.Raw("Amount of Rooms")
         </dt>
 
         <dd>
@@ -77,7 +77,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.area_size)
+            @Html.Raw(String.Format("{0:#}", @Model.area_size))
+            @Html.Raw(" m<sup>2</sup>")
         </dd>
     </dl>
 </div>
